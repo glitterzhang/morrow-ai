@@ -54,7 +54,8 @@
   }
   .site-nav .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; padding-bottom: 14px; }
   .brand-mark { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); font-weight: 800; font-size: 16px; letter-spacing: -0.01em; }
-  .brand-mark .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+  .brand-mark svg { flex-shrink: 0; }
+  .ai-accent { color: var(--accent); }
   .site-nav nav { display: flex; align-items: center; gap: 22px; }
   .site-nav nav a:not(.btn) { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; }
   .site-nav nav a:not(.btn):hover { color: var(--ink); }
@@ -150,7 +151,7 @@
 
 <header class="site-nav">
   <div class="wrap">
-    <a class="brand-mark" href="#"><span class="dot"></span>Morrow AI</a>
+    <a class="brand-mark" href="#"><svg width="22" height="22" viewBox="0 0 512 512"><clipPath id="navCapClip"><rect x="0" y="0" width="512" height="292"/></clipPath><circle cx="256" cy="345" r="85" fill="currentColor" clip-path="url(#navCapClip)"/><path d="M 128 362 L 210 198 L 256 292 L 302 198 L 384 362" fill="none" stroke="currentColor" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/></svg>Morrow <span class="ai-accent">AI</span></a>
     <nav>
       <a href="#tools">Products</a>
       <a href="#about">About</a>
@@ -163,7 +164,7 @@
 
 <section class="hero">
   <div class="wrap">
-    <h1>Morrow AI</h1>
+    <h1>Morrow <span class="ai-accent">AI</span></h1>
     <p class="tagline">Tools for better decisions, work, and growth.</p>
     <p class="sub">Simple AI, data, and optimization tools for creators, researchers, job seekers, and small teams.</p>
     <div class="cta-row">
@@ -246,7 +247,7 @@
 
 <footer>
   <div class="wrap">
-    <a class="brand-mark" href="#"><span class="dot"></span>Morrow AI</a>
+    <a class="brand-mark" href="#"><svg width="20" height="20" viewBox="0 0 512 512"><clipPath id="footCapClip"><rect x="0" y="0" width="512" height="292"/></clipPath><circle cx="256" cy="345" r="85" fill="currentColor" clip-path="url(#footCapClip)"/><path d="M 128 362 L 210 198 L 256 292 L 302 198 L 384 362" fill="none" stroke="currentColor" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/></svg>Morrow <span class="ai-accent">AI</span></a>
     <div class="links">
       <a href="#tools">Products</a>
       <a href="#about">About</a>
