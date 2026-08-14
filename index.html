@@ -141,13 +141,32 @@
   footer .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   footer .brand-mark { font-size: 14px; }
   footer .brand-mark img { width: 28px; height: 28px; }
-  footer .links { display: flex; gap: 18px; }
+  footer .links { display: flex; gap: 18px; align-items: center; }
   footer .links a { color: var(--ink-soft); text-decoration: none; font-size: 13px; }
   footer .links a:hover { color: var(--ink); }
+
+  /* Contact popover */
+  .contact-wrap { position: relative; display: inline-flex; }
+  .contact-btn {
+    background: none; border: none; padding: 0; margin: 0; cursor: pointer;
+    font: inherit; color: var(--ink-soft); font-size: 14px; font-weight: 500;
+  }
+  .site-nav .contact-btn { font-size: 14px; font-weight: 500; }
+  footer .contact-btn { font-size: 13px; font-weight: 400; }
+  .contact-btn:hover { color: var(--ink); }
+  .contact-pop {
+    display: none; position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+    background: var(--card); border: 1px solid var(--rule); border-radius: 8px; box-shadow: var(--shadow);
+    padding: 10px 14px; white-space: nowrap; font-size: 13.5px; z-index: 40;
+  }
+  .contact-pop.open { display: block; }
+  .contact-pop a { color: var(--accent-ink); text-decoration: none; }
+  .contact-pop a:hover { text-decoration: underline; }
 
   @media (max-width: 760px) {
     .site-nav nav { gap: 12px; }
     .site-nav nav a:not(.btn) { display: none; }
+    .site-nav .contact-wrap { display: none; }
     .featured { grid-template-columns: 1fr; }
     .featured-visual { border-left: none; border-top: 1px solid var(--rule); }
     .tools-grid { grid-template-columns: 1fr; }
@@ -164,6 +183,10 @@
       <a href="#about">About</a>
       <a href="privacy.html">Privacy</a>
       <a href="https://github.com/glitterzhang" target="_blank" rel="noopener">GitHub</a>
+      <span class="contact-wrap">
+        <button class="contact-btn" type="button" data-contact-toggle>Contact</button>
+        <span class="contact-pop" data-contact-pop></span>
+      </span>
       <a class="btn btn-primary" href="https://creator.morrowai.app" target="_blank" rel="noopener">Try CreatorHQ</a>
     </nav>
   </div>
@@ -265,10 +288,34 @@
       <a href="#about">About</a>
       <a href="privacy.html">Privacy</a>
       <a href="https://github.com/glitterzhang" target="_blank" rel="noopener">GitHub</a>
+      <span class="contact-wrap">
+        <button class="contact-btn" type="button" data-contact-toggle>Contact</button>
+        <span class="contact-pop" data-contact-pop></span>
+      </span>
     </div>
   </div>
 </footer>
 
+<script>
+(function () {
+  var email = atob('Z2xpdHRlcm9zdUBnbWFpbC5jb20=');
+  document.querySelectorAll('[data-contact-toggle]').forEach(function (btn) {
+    var pop = btn.parentElement.querySelector('[data-contact-pop]');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = pop.classList.contains('open');
+      document.querySelectorAll('.contact-pop.open').forEach(function (p) { p.classList.remove('open'); });
+      if (!isOpen) {
+        pop.innerHTML = '<a href="mailto:' + email + '">' + email + '</a>';
+        pop.classList.add('open');
+      }
+    });
+  });
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.contact-pop.open').forEach(function (p) { p.classList.remove('open'); });
+  });
+})();
+</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
