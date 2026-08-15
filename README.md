@@ -19,8 +19,9 @@ no build command, output directory `.`).
 
 - `morrowai.app` — this repo (the hub page)
 - `creator.morrowai.app` — CreatorHQ, deployed from its own separate repo/Vercel project
-- `goal.morrowai.app`, `career.morrowai.app`, `research.morrowai.app`, `data.morrowai.app`,
-  `optimize.morrowai.app` — reserved for future products, not yet deployed
+- `goaltoaction.morrowai.app` — Goal-to-Action, deployed from its own separate repo/Vercel project
+- `career.morrowai.app`, `research.morrowai.app`, `data.morrowai.app`, `optimize.morrowai.app` —
+  reserved for future products, not yet deployed
 
 Each product is its own independent repo and Vercel project, given a `*.morrowai.app` subdomain
 as a custom domain. This repo never proxies or rewrites to them — it just links out.
