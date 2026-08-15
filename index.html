@@ -121,14 +121,16 @@
     background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 22px 20px;
     display: flex; flex-direction: column; gap: 10px;
   }
-  .tool-card.available { border-color: color-mix(in srgb, var(--accent) 35%, var(--rule)); }
+  .tool-card.available { border-color: color-mix(in srgb, var(--tool-accent, var(--accent)) 35%, var(--rule)); }
   .tool-card .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .tool-card .name { display: flex; align-items: center; gap: 9px; }
   .tool-card h4 { font-size: 16px; margin: 0; font-weight: 700; }
+  .tool-icon { width: 24px; height: 24px; border-radius: 7px; display: block; object-fit: cover; flex-shrink: 0; }
   .status-tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; white-space: nowrap; }
-  .status-tag.available { background: var(--accent-soft); color: var(--accent-ink); }
+  .status-tag.available { background: var(--tool-accent-soft, var(--accent-soft)); color: var(--tool-accent-ink, var(--accent-ink)); }
   .status-tag.soon { background: var(--rule); color: var(--ink-soft); }
   .tool-card p { color: var(--ink-soft); font-size: 13.5px; margin: 0; line-height: 1.55; }
-  .tool-card .link { font-size: 13.5px; font-weight: 600; margin-top: auto; }
+  .tool-card .link { font-size: 13.5px; font-weight: 600; margin-top: auto; color: var(--tool-accent-ink, var(--accent-ink)); }
   .tool-card:not(.available) { opacity: 0.7; }
 
   /* Mission */
@@ -244,13 +246,21 @@
       <p>One focused tool per job — start with what's available, more are on the way.</p>
     </div>
     <div class="tools-grid">
-      <div class="tool-card available">
-        <div class="row"><h4>CreatorHQ</h4><span class="status-tag available">Available</span></div>
+      <div class="tool-card available" style="--tool-accent:#7C3AED; --tool-accent-ink:#B79CFB; --tool-accent-soft:color-mix(in srgb, #7C3AED 18%, transparent);">
+        <div class="row">
+          <div class="name"><img class="tool-icon" src="assets/apps/creatorhq-icon.png" alt="">
+          <h4>CreatorHQ</h4></div>
+          <span class="status-tag available">Available</span>
+        </div>
         <p>Client, project, and income tracking for freelance creators.</p>
         <a class="link" href="https://creator.morrowai.app" target="_blank" rel="noopener">Try it →</a>
       </div>
-      <div class="tool-card available">
-        <div class="row"><h4>Goal-to-Action</h4><span class="status-tag available">Available</span></div>
+      <div class="tool-card available" style="--tool-accent:#DB8A2E; --tool-accent-ink:#F2A544; --tool-accent-soft:color-mix(in srgb, #DB8A2E 18%, transparent);">
+        <div class="row">
+          <div class="name"><img class="tool-icon" src="assets/apps/goaltoaction-icon.png" alt="">
+          <h4>Goal-to-Action</h4></div>
+          <span class="status-tag available">Available</span>
+        </div>
         <p>Prioritize goals with proven frameworks, spot what you're avoiding, and run weekly reviews — free in your browser.</p>
         <a class="link" href="https://goaltoaction.morrowai.app" target="_blank" rel="noopener">Try it →</a>
       </div>
