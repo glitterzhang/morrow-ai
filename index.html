@@ -248,10 +248,35 @@
   .contact-pop a { color: var(--accent-ink); text-decoration: none; }
   .contact-pop a:hover { text-decoration: underline; }
 
+  /* Language switcher */
+  .lang-wrap { position: relative; display: inline-flex; }
+  .lang-btn {
+    background: none; border: none; padding: 0; margin: 0; cursor: pointer;
+    font: inherit; color: var(--ink-soft); font-size: 14px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .site-nav .lang-btn { font-size: 14px; font-weight: 500; }
+  footer .lang-btn { font-size: 13px; font-weight: 400; }
+  .lang-btn:hover { color: var(--ink); }
+  .lang-btn .chev { font-size: 9px; opacity: 0.7; }
+  .lang-pop {
+    display: none; position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+    background: var(--card); border: 1px solid var(--rule); border-radius: 8px; box-shadow: var(--shadow);
+    padding: 6px; z-index: 40; min-width: 132px;
+  }
+  .lang-pop.open { display: block; }
+  .lang-pop button {
+    display: block; width: 100%; text-align: left; background: none; border: none;
+    padding: 7px 10px; border-radius: 6px; font: inherit; font-size: 13.5px; color: var(--ink); cursor: pointer;
+  }
+  .lang-pop button:hover { background: var(--accent-soft); color: var(--accent-ink); }
+  .lang-pop button[aria-current="true"] { color: var(--accent-ink); font-weight: 600; }
+
   @media (max-width: 760px) {
     .site-nav nav { gap: 12px; }
     .site-nav nav a:not(.btn) { display: none; }
     .site-nav .contact-wrap { display: none; }
+    .site-nav .lang-wrap { display: none; }
     .featured { grid-template-columns: 1fr; }
     .featured-visual { border-left: none; border-top: 1px solid var(--rule); }
     .tools-grid { grid-template-columns: 1fr; }
@@ -274,15 +299,24 @@
   <div class="wrap">
     <a class="brand-mark" href="#"><img src="assets/logo-mark.png" alt="">Morrow <span class="ai-accent">AI</span></a>
     <nav>
-      <a href="#tools">Products</a>
-      <a href="#about">About</a>
-      <a href="privacy.html">Privacy</a>
+      <a href="#tools" data-i18n="nav.products">Products</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
       <a href="https://github.com/glitterzhang" target="_blank" rel="noopener">GitHub</a>
       <span class="contact-wrap">
-        <button class="contact-btn" type="button" data-contact-toggle>Contact</button>
+        <button class="contact-btn" type="button" data-contact-toggle data-i18n="nav.contact">Contact</button>
         <span class="contact-pop" data-contact-pop></span>
       </span>
-      <a class="btn btn-primary btn-magnetic" href="https://creator.morrowai.app" target="_blank" rel="noopener">Try CreatorHQ</a>
+      <span class="lang-wrap">
+        <button class="lang-btn" type="button" data-lang-toggle aria-label="Change language"><span data-lang-code>EN</span><span class="chev">▾</span></button>
+        <span class="lang-pop" data-lang-pop>
+          <button type="button" data-lang-set="en">English</button>
+          <button type="button" data-lang-set="es">Español</button>
+          <button type="button" data-lang-set="de">Deutsch</button>
+          <button type="button" data-lang-set="fr">Français</button>
+        </span>
+      </span>
+      <a class="btn btn-primary btn-magnetic" href="https://creator.morrowai.app" target="_blank" rel="noopener" data-i18n="nav.tryCreator">Try CreatorHQ</a>
     </nav>
   </div>
 </header>
@@ -291,13 +325,13 @@
   <div class="hero-spotlight" id="heroSpotlight"></div>
   <div class="wrap">
     <img class="logo-hero load-in" style="--ld:0s" src="assets/logo-mark.png" alt="Morrow AI mark">
-    <span class="eyebrow load-in" style="--ld:.1s"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 L14.6 9.4 L22 12 L14.6 14.6 L12 22 L9.4 14.6 L2 12 L9.4 9.4 Z"/></svg>AI-native tools</span>
+    <span class="eyebrow load-in" style="--ld:.1s"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 L14.6 9.4 L22 12 L14.6 14.6 L12 22 L9.4 14.6 L2 12 L9.4 9.4 Z"/></svg><span data-i18n="hero.eyebrow">AI-native tools</span></span>
     <h1 class="load-in" style="--ld:.18s">Morrow <span class="ai-accent">AI</span></h1>
-    <p class="tagline load-in" style="--ld:.26s">Tools for better decisions, work, and growth.</p>
-    <p class="sub load-in" style="--ld:.34s">Simple AI, data, and optimization tools for creators, researchers, job seekers, and small teams.</p>
+    <p class="tagline load-in" style="--ld:.26s" data-i18n="hero.tagline">Tools for better decisions, work, and growth.</p>
+    <p class="sub load-in" style="--ld:.34s" data-i18n="hero.sub">Simple AI, data, and optimization tools for creators, researchers, job seekers, and small teams.</p>
     <div class="cta-row load-in" style="--ld:.42s">
-      <a class="btn btn-primary btn-lg btn-magnetic" href="#tools">Explore tools</a>
-      <a class="btn btn-ghost btn-lg btn-magnetic" href="https://creator.morrowai.app" target="_blank" rel="noopener">Try CreatorHQ</a>
+      <a class="btn btn-primary btn-lg btn-magnetic" href="#tools" data-i18n="hero.explore">Explore tools</a>
+      <a class="btn btn-ghost btn-lg btn-magnetic" href="https://creator.morrowai.app" target="_blank" rel="noopener" data-i18n="nav.tryCreator">Try CreatorHQ</a>
     </div>
   </div>
 </section>
@@ -306,11 +340,11 @@
   <div class="wrap">
     <div class="featured reveal">
       <div class="featured-copy">
-        <span class="eyebrow">Featured</span>
+        <span class="eyebrow" data-i18n="featured.eyebrow">Featured</span>
         <h3>CreatorHQ</h3>
-        <p>Your freelance business, in one place. Know what's due, who owes you, and which clients are renewing — free in your browser, no account needed.</p>
+        <p data-i18n="featured.desc">Your freelance business, in one place. Know what's due, who owes you, and which clients are renewing — free in your browser, no account needed.</p>
         <div>
-          <a class="btn btn-primary btn-magnetic" href="https://creator.morrowai.app" target="_blank" rel="noopener">Try in browser</a>
+          <a class="btn btn-primary btn-magnetic" href="https://creator.morrowai.app" target="_blank" rel="noopener" data-i18n="featured.cta">Try in browser</a>
         </div>
       </div>
       <div class="featured-visual">
@@ -337,43 +371,43 @@
 <section id="tools">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2>Tools</h2>
-      <p>One focused tool per job — start with what's available, more are on the way.</p>
+      <h2 data-i18n="tools.heading">Tools</h2>
+      <p data-i18n="tools.sub">One focused tool per job — start with what's available, more are on the way.</p>
     </div>
     <div class="tools-grid">
       <div class="tool-card available reveal tool-tilt" style="--rd:0s; --tool-accent:#7C3AED; --tool-accent-ink:#B79CFB; --tool-accent-soft:color-mix(in srgb, #7C3AED 18%, transparent);">
         <div class="row">
           <div class="name"><img class="tool-icon" src="assets/apps/creatorhq-icon.png" alt="">
           <h4>CreatorHQ</h4></div>
-          <span class="status-tag available">Available</span>
+          <span class="status-tag available" data-i18n="status.available">Available</span>
         </div>
-        <p>Client, project, and income tracking for freelance creators.</p>
-        <a class="link" href="https://creator.morrowai.app" target="_blank" rel="noopener">Try it <span class="arrow">→</span></a>
+        <p data-i18n="tool.creatorhq.desc">Client, project, and income tracking for freelance creators.</p>
+        <a class="link" href="https://creator.morrowai.app" target="_blank" rel="noopener"><span data-i18n="tools.tryIt">Try it</span> <span class="arrow">→</span></a>
       </div>
       <div class="tool-card available reveal tool-tilt" style="--rd:.06s; --tool-accent:#DB8A2E; --tool-accent-ink:#F2A544; --tool-accent-soft:color-mix(in srgb, #DB8A2E 18%, transparent);">
         <div class="row">
           <div class="name"><img class="tool-icon" src="assets/apps/goaltoaction-icon.png" alt="">
           <h4>Goal-to-Action</h4></div>
-          <span class="status-tag available">Available</span>
+          <span class="status-tag available" data-i18n="status.available">Available</span>
         </div>
-        <p>Prioritize goals with proven frameworks, spot what you're avoiding, and run weekly reviews — free in your browser.</p>
-        <a class="link" href="https://goaltoaction.morrowai.app" target="_blank" rel="noopener">Try it <span class="arrow">→</span></a>
+        <p data-i18n="tool.goaltoaction.desc">Prioritize goals with proven frameworks, spot what you're avoiding, and run weekly reviews — free in your browser.</p>
+        <a class="link" href="https://goaltoaction.morrowai.app" target="_blank" rel="noopener"><span data-i18n="tools.tryIt">Try it</span> <span class="arrow">→</span></a>
       </div>
       <div class="tool-card reveal tool-tilt" style="--rd:.12s">
-        <div class="row"><h4>Career</h4><span class="status-tag soon">Coming soon</span></div>
-        <p>Tools for navigating job searches and career decisions.</p>
+        <div class="row"><h4>Career</h4><span class="status-tag soon" data-i18n="status.soon">Coming soon</span></div>
+        <p data-i18n="tool.career.desc">Tools for navigating job searches and career decisions.</p>
       </div>
       <div class="tool-card reveal tool-tilt" style="--rd:0s">
-        <div class="row"><h4>Research</h4><span class="status-tag soon">Coming soon</span></div>
-        <p>Tools for organizing and making sense of research work.</p>
+        <div class="row"><h4>Research</h4><span class="status-tag soon" data-i18n="status.soon">Coming soon</span></div>
+        <p data-i18n="tool.research.desc">Tools for organizing and making sense of research work.</p>
       </div>
       <div class="tool-card reveal tool-tilt" style="--rd:.06s">
-        <div class="row"><h4>Data &amp; ML</h4><span class="status-tag soon">Coming soon</span></div>
-        <p>Lightweight tools for data analysis and machine learning workflows.</p>
+        <div class="row"><h4>Data &amp; ML</h4><span class="status-tag soon" data-i18n="status.soon">Coming soon</span></div>
+        <p data-i18n="tool.dataml.desc">Lightweight tools for data analysis and machine learning workflows.</p>
       </div>
       <div class="tool-card reveal tool-tilt" style="--rd:.12s">
-        <div class="row"><h4>Optimize</h4><span class="status-tag soon">Coming soon</span></div>
-        <p>Tools for optimization and decision problems in day-to-day work.</p>
+        <div class="row"><h4>Optimize</h4><span class="status-tag soon" data-i18n="status.soon">Coming soon</span></div>
+        <p data-i18n="tool.optimize.desc">Tools for optimization and decision problems in day-to-day work.</p>
       </div>
     </div>
   </div>
@@ -381,8 +415,8 @@
 
 <section class="mission reveal" id="about">
   <div class="wrap">
-    <h2>From information to action.</h2>
-    <p>Morrow AI builds small, focused software tools for people who need to analyze information, manage complex work, and make better decisions. Our products combine thoughtful interfaces with AI, data analysis, and optimization where they actually help.</p>
+    <h2 data-i18n="mission.heading">From information to action.</h2>
+    <p data-i18n="mission.desc">Morrow AI builds small, focused software tools for people who need to analyze information, manage complex work, and make better decisions. Our products combine thoughtful interfaces with AI, data analysis, and optimization where they actually help.</p>
   </div>
 </section>
 
@@ -390,13 +424,22 @@
   <div class="wrap">
     <a class="brand-mark" href="#"><img src="assets/logo-mark.png" alt="">Morrow <span class="ai-accent">AI</span></a>
     <div class="links">
-      <a href="#tools">Products</a>
-      <a href="#about">About</a>
-      <a href="privacy.html">Privacy</a>
+      <a href="#tools" data-i18n="nav.products">Products</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
       <a href="https://github.com/glitterzhang" target="_blank" rel="noopener">GitHub</a>
       <span class="contact-wrap">
-        <button class="contact-btn" type="button" data-contact-toggle>Contact</button>
+        <button class="contact-btn" type="button" data-contact-toggle data-i18n="nav.contact">Contact</button>
         <span class="contact-pop" data-contact-pop></span>
+      </span>
+      <span class="lang-wrap">
+        <button class="lang-btn" type="button" data-lang-toggle aria-label="Change language"><span data-lang-code>EN</span><span class="chev">▾</span></button>
+        <span class="lang-pop" data-lang-pop>
+          <button type="button" data-lang-set="en">English</button>
+          <button type="button" data-lang-set="es">Español</button>
+          <button type="button" data-lang-set="de">Deutsch</button>
+          <button type="button" data-lang-set="fr">Français</button>
+        </span>
       </span>
     </div>
   </div>
@@ -405,23 +448,165 @@
 <script>
 (function () {
   var email = atob('bW9ycm93YWl0ZWFtQGdtYWlsLmNvbQ==');
+  function closeAllPopovers() {
+    document.querySelectorAll('.contact-pop.open, .lang-pop.open').forEach(function (p) { p.classList.remove('open'); });
+  }
   document.querySelectorAll('[data-contact-toggle]').forEach(function (btn) {
     var pop = btn.parentElement.querySelector('[data-contact-pop]');
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
       var isOpen = pop.classList.contains('open');
-      document.querySelectorAll('.contact-pop.open').forEach(function (p) { p.classList.remove('open'); });
+      closeAllPopovers();
       if (!isOpen) {
         pop.innerHTML = '<a href="mailto:' + email + '">' + email + '</a>';
         pop.classList.add('open');
       }
     });
   });
-  document.addEventListener('click', function () {
-    document.querySelectorAll('.contact-pop.open').forEach(function (p) { p.classList.remove('open'); });
-  });
+  document.addEventListener('click', closeAllPopovers);
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- i18n ---- */
+  var SUPPORTED_LANGS = ['en', 'es', 'de', 'fr'];
+  var LANG_CODES = { en: 'EN', es: 'ES', de: 'DE', fr: 'FR' };
+  var translations = {
+    en: {
+      'nav.products': 'Products', 'nav.about': 'About', 'nav.privacy': 'Privacy', 'nav.contact': 'Contact',
+      'nav.tryCreator': 'Try CreatorHQ',
+      'hero.eyebrow': 'AI-native tools',
+      'hero.tagline': 'Tools for better decisions, work, and growth.',
+      'hero.sub': 'Simple AI, data, and optimization tools for creators, researchers, job seekers, and small teams.',
+      'hero.explore': 'Explore tools',
+      'featured.eyebrow': 'Featured',
+      'featured.desc': "Your freelance business, in one place. Know what's due, who owes you, and which clients are renewing — free in your browser, no account needed.",
+      'featured.cta': 'Try in browser',
+      'tools.heading': 'Tools',
+      'tools.sub': "One focused tool per job — start with what's available, more are on the way.",
+      'tools.tryIt': 'Try it',
+      'status.available': 'Available', 'status.soon': 'Coming soon',
+      'tool.creatorhq.desc': 'Client, project, and income tracking for freelance creators.',
+      'tool.goaltoaction.desc': "Prioritize goals with proven frameworks, spot what you're avoiding, and run weekly reviews — free in your browser.",
+      'tool.career.desc': 'Tools for navigating job searches and career decisions.',
+      'tool.research.desc': 'Tools for organizing and making sense of research work.',
+      'tool.dataml.desc': 'Lightweight tools for data analysis and machine learning workflows.',
+      'tool.optimize.desc': 'Tools for optimization and decision problems in day-to-day work.',
+      'mission.heading': 'From information to action.',
+      'mission.desc': 'Morrow AI builds small, focused software tools for people who need to analyze information, manage complex work, and make better decisions. Our products combine thoughtful interfaces with AI, data analysis, and optimization where they actually help.'
+    },
+    es: {
+      'nav.products': 'Productos', 'nav.about': 'Acerca de', 'nav.privacy': 'Privacidad', 'nav.contact': 'Contacto',
+      'nav.tryCreator': 'Probar CreatorHQ',
+      'hero.eyebrow': 'Herramientas con IA nativa',
+      'hero.tagline': 'Herramientas para decidir, trabajar y crecer mejor.',
+      'hero.sub': 'Herramientas sencillas de IA, datos y optimización para creadores, investigadores, buscadores de empleo y equipos pequeños.',
+      'hero.explore': 'Explorar herramientas',
+      'featured.eyebrow': 'Destacado',
+      'featured.desc': 'Tu negocio freelance, en un solo lugar. Ve qué vence, quién te debe y qué clientes están renovando — gratis en tu navegador, sin necesidad de cuenta.',
+      'featured.cta': 'Probar en el navegador',
+      'tools.heading': 'Herramientas',
+      'tools.sub': 'Una herramienta enfocada para cada tarea — empieza con lo disponible, vienen más en camino.',
+      'tools.tryIt': 'Probarlo',
+      'status.available': 'Disponible', 'status.soon': 'Próximamente',
+      'tool.creatorhq.desc': 'Seguimiento de clientes, proyectos e ingresos para creadores freelance.',
+      'tool.goaltoaction.desc': 'Prioriza tus metas con marcos probados, detecta lo que estás evitando y haz revisiones semanales — gratis en tu navegador.',
+      'tool.career.desc': 'Herramientas para orientarte en la búsqueda de empleo y decisiones de carrera.',
+      'tool.research.desc': 'Herramientas para organizar y dar sentido al trabajo de investigación.',
+      'tool.dataml.desc': 'Herramientas ligeras para análisis de datos y flujos de trabajo de machine learning.',
+      'tool.optimize.desc': 'Herramientas para problemas de optimización y decisiones del día a día.',
+      'mission.heading': 'De la información a la acción.',
+      'mission.desc': 'Morrow AI crea herramientas de software pequeñas y enfocadas para quienes necesitan analizar información, gestionar trabajo complejo y tomar mejores decisiones. Nuestros productos combinan interfaces cuidadas con IA, análisis de datos y optimización donde realmente ayudan.'
+    },
+    de: {
+      'nav.products': 'Produkte', 'nav.about': 'Über uns', 'nav.privacy': 'Datenschutz', 'nav.contact': 'Kontakt',
+      'nav.tryCreator': 'CreatorHQ testen',
+      'hero.eyebrow': 'KI-native Tools',
+      'hero.tagline': 'Werkzeuge für bessere Entscheidungen, Arbeit und Wachstum.',
+      'hero.sub': 'Einfache KI-, Daten- und Optimierungstools für Creator, Forschende, Jobsuchende und kleine Teams.',
+      'hero.explore': 'Tools entdecken',
+      'featured.eyebrow': 'Vorgestellt',
+      'featured.desc': 'Dein Freelance-Geschäft an einem Ort. Sieh, was fällig ist, wer dir noch etwas schuldet und welche Kunden verlängern — kostenlos im Browser, kein Konto nötig.',
+      'featured.cta': 'Im Browser testen',
+      'tools.heading': 'Tools',
+      'tools.sub': 'Ein fokussiertes Tool pro Aufgabe — starte mit dem, was verfügbar ist, mehr folgt.',
+      'tools.tryIt': 'Ausprobieren',
+      'status.available': 'Verfügbar', 'status.soon': 'Demnächst',
+      'tool.creatorhq.desc': 'Kunden-, Projekt- und Einnahmen-Tracking für freiberufliche Creator.',
+      'tool.goaltoaction.desc': 'Priorisiere Ziele mit bewährten Methoden, erkenne, was du vermeidest, und führe wöchentliche Reviews durch — kostenlos im Browser.',
+      'tool.career.desc': 'Tools für Jobsuche und Karriereentscheidungen.',
+      'tool.research.desc': 'Tools zum Organisieren und Einordnen von Forschungsarbeit.',
+      'tool.dataml.desc': 'Leichte Tools für Datenanalyse und Machine-Learning-Workflows.',
+      'tool.optimize.desc': 'Tools für Optimierungs- und Entscheidungsprobleme im Alltag.',
+      'mission.heading': 'Von Information zu Handlung.',
+      'mission.desc': 'Morrow AI entwickelt kleine, fokussierte Software-Tools für Menschen, die Informationen analysieren, komplexe Arbeit managen und bessere Entscheidungen treffen müssen. Unsere Produkte verbinden durchdachte Oberflächen mit KI, Datenanalyse und Optimierung, wo sie wirklich helfen.'
+    },
+    fr: {
+      'nav.products': 'Produits', 'nav.about': 'À propos', 'nav.privacy': 'Confidentialité', 'nav.contact': 'Contact',
+      'nav.tryCreator': 'Essayer CreatorHQ',
+      'hero.eyebrow': 'Outils nativement IA',
+      'hero.tagline': 'Des outils pour mieux décider, travailler et progresser.',
+      'hero.sub': "Des outils simples d'IA, de données et d'optimisation pour les créateurs, chercheurs, candidats à l'emploi et petites équipes.",
+      'hero.explore': 'Découvrir les outils',
+      'featured.eyebrow': 'En vedette',
+      'featured.desc': "Votre activité freelance, au même endroit. Voyez ce qui est dû, qui vous doit de l'argent et quels clients renouvellent — gratuit dans votre navigateur, sans compte requis.",
+      'featured.cta': 'Essayer dans le navigateur',
+      'tools.heading': 'Outils',
+      'tools.sub': 'Un outil ciblé pour chaque tâche — commencez avec ce qui est disponible, d\'autres arrivent bientôt.',
+      'tools.tryIt': 'Essayer',
+      'status.available': 'Disponible', 'status.soon': 'Bientôt disponible',
+      'tool.creatorhq.desc': 'Suivi des clients, projets et revenus pour les créateurs freelances.',
+      'tool.goaltoaction.desc': 'Priorisez vos objectifs avec des méthodes éprouvées, repérez ce que vous évitez et faites des bilans hebdomadaires — gratuit dans votre navigateur.',
+      'tool.career.desc': "Des outils pour la recherche d'emploi et les décisions de carrière.",
+      'tool.research.desc': 'Des outils pour organiser et donner du sens au travail de recherche.',
+      'tool.dataml.desc': "Des outils légers pour l'analyse de données et les workflows de machine learning.",
+      'tool.optimize.desc': "Des outils pour les problèmes d'optimisation et les décisions du quotidien.",
+      'mission.heading': "De l'information à l'action.",
+      'mission.desc': "Morrow AI conçoit des outils logiciels simples et ciblés pour celles et ceux qui doivent analyser de l'information, gérer un travail complexe et prendre de meilleures décisions. Nos produits allient des interfaces soignées à l'IA, à l'analyse de données et à l'optimisation, là où elles apportent une réelle valeur."
+    }
+  };
+
+  function applyLang(lang) {
+    if (!translations[lang]) lang = 'en';
+    var dict = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key]) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-lang-code]').forEach(function (el) { el.textContent = LANG_CODES[lang]; });
+    document.querySelectorAll('[data-lang-set]').forEach(function (btn) {
+      btn.setAttribute('aria-current', btn.getAttribute('data-lang-set') === lang ? 'true' : 'false');
+    });
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('morrow_lang', lang); } catch (e) {}
+  }
+
+  function detectLang() {
+    try {
+      var saved = localStorage.getItem('morrow_lang');
+      if (saved && SUPPORTED_LANGS.indexOf(saved) !== -1) return saved;
+    } catch (e) {}
+    var nav = (navigator.language || navigator.userLanguage || 'en').slice(0, 2).toLowerCase();
+    return SUPPORTED_LANGS.indexOf(nav) !== -1 ? nav : 'en';
+  }
+
+  applyLang(detectLang());
+
+  document.querySelectorAll('[data-lang-toggle]').forEach(function (btn) {
+    var pop = btn.parentElement.querySelector('[data-lang-pop]');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = pop.classList.contains('open');
+      closeAllPopovers();
+      if (!isOpen) pop.classList.add('open');
+    });
+  });
+  document.querySelectorAll('[data-lang-set]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      applyLang(btn.getAttribute('data-lang-set'));
+      closeAllPopovers();
+    });
+  });
 
   /* Scroll progress bar + nav condense */
   var progress = document.getElementById('scrollProgress');
